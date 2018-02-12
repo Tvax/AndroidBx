@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Application Ligue1</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="description">Description</string>
+    <string name="_34_pts">34 PTS</string>
+    <string name="nom_equipe">Nom Equipe</string>
+    <string name="n_4">N*4</string>
+    <string name="todo">TODO</string>
+    <string name="date">Date</string>
+    <string name="equipe_1">Equipe 1</string>
+</resources>

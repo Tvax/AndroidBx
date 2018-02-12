@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="6dip">
+
+    <TextView
+        android:id="@+id/matchDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:text="@string/date"
+        android:textSize="12sp"
+        android:layout_marginBottom="5dp"
+        android:layout_alignStart="@id/matchHomeTeamImage"
+        android:layout_alignLeft="@id/matchHomeTeamImage" />
+
+    <ImageView
+        android:id="@+id/matchHomeTeamImage"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/matchDateText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/todo" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutScore"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/matchDateText"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/matchHomeTeamNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/equipe_1"
+            android:gravity="center_vertical"
+            android:textSize="12sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            />
+
+        <TextView
+            android:id="@+id/matchScoreText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:singleLine="true"
+            android:text="0 - 0"
+            android:layout_toRightOf="@id/matchHomeTeamNameText"
+            android:gravity="center_vertical"
+            android:textSize="12sp"
+            android:layout_toEndOf="@id/matchHomeTeamNameText"
+            android:layout_marginHorizontal="10dp"
+            tools:ignore="HardcodedText"
+            tools:targetApi="o" />
+
+        <TextView
+            android:id="@+id/matchAwayTeamNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Equipe 2"
+            android:gravity="center_vertical"
+            android:textSize="12sp"
+            android:layout_toEndOf="@id/matchScoreText"
+            tools:ignore="HardcodedText"
+            android:layout_toRightOf="@id/matchScoreText" />
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/matchAwayTeamImage"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/matchDateText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/todo" />
+
+</RelativeLayout>
