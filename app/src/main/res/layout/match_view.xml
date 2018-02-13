@@ -22,7 +22,8 @@
         android:layout_height="match_parent"
         android:layout_below="@id/matchDateText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/teamImageDescription" />
 
     <RelativeLayout
         android:id="@+id/relativeLayoutScore"
@@ -71,6 +72,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/matchDateText"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/teamImageDescription" />
 
 </RelativeLayout>

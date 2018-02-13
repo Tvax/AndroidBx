@@ -95,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
         JsonParser.getTeams(callBack);
     }
 
+    /**
+     * Créé un {@link SportsClub} grâce à un {@link Standing}
+     * @param i la {@link Standing} du {@link SportsClub}
+     * @return le {@link SportsClub} correpondant
+     */
     private SportsClub makeSportsClub(Standing i) {
         SportsClub tmp = new SportsClub();
 
@@ -106,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         tmp.setLooses(String.valueOf(i.getLosses()));
         tmp.setDraws(String.valueOf(i.getDraws()));
 
-        tmp.setImg(i.getCrestURI());
+        tmp.setLogoUrl(i.getCrestURI());
         tmp.setName(i.getTeamName());
         tmp.setPoints(String.valueOf(i.getPoints()));
         tmp.setRank(String.valueOf(i.getPosition()));

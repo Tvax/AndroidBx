@@ -19,7 +19,9 @@ import java.util.List;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
-
+/**
+ * L'adpateur de la liste des equipes
+ */
 public class TeamListAdapter extends ArrayAdapter<SportsClub> {
     private static final String WHITE_SPACE = " ";
     private static final String DOUBLE_WHITE_SPACE = WHITE_SPACE + WHITE_SPACE;
@@ -57,13 +59,18 @@ public class TeamListAdapter extends ArrayAdapter<SportsClub> {
         TextView stats = convertView.findViewById(R.id.stats);
         stats.setText(makeStatsString(sportsClubs.get(position)));
 
-        ImageView img = convertView.findViewById(R.id.img);
+        ImageView img = convertView.findViewById(R.id.logoUrl);
         img.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        Display.setImageViewToImage(sportsClubs.get(position).getImg(), activity, activity.getApplicationContext(), img);
+        Display.setImageViewToImage(sportsClubs.get(position).getLogoUrl(), activity, activity.getApplicationContext(), img);
 
         return convertView;
     }
 
+    /**
+     * Créé un string des statistiques d'un {@link SportsClub}
+     * @param sportsClub des statistiques à retourner
+     * @return string des statistiques d'un {@link SportsClub}
+     */
     private String makeStatsString(SportsClub sportsClub) {
         String ans = sportsClub.getPlayedGames();
         ans += WHITE_SPACE + getStringFromResource(R.string.playedGames, resources);
@@ -89,6 +96,12 @@ public class TeamListAdapter extends ArrayAdapter<SportsClub> {
         return ans;
     }
 
+    /**
+     * Accéde à la valeur d'une ressource
+     * @param id de la ressource
+     * @param resources ressource de l'application
+     * @return le string de la valeur de la ressource
+     */
     private String getStringFromResource(int id, Resources resources){
         return resources.getString(id);
     }

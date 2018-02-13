@@ -4,20 +4,51 @@ import com.ligue1.applicationligue1.model.api.match.TeamCallback;
 import com.ligue1.applicationligue1.model.api.team.Team;
 import com.ligue1.applicationligue1.util.JsonParser;
 
+/**
+ * Equipe de football
+ */
 public class SportsClub {
+
+    //id du {@link SportsClub} sur l'API
     private String id;
-    private String img;
+
+    //lien de lu logo de l'équipe
+    private String logoUrl;
+
+    //nom de l'équipe
     private String name;
+
+    //classement de l'équipe
     private String rank;
+
+    //nombre de points de l'équipe
     private String points;
+
+    //lien de l'équipe sur l'API
     private String teamLink;
+
+    //nom raccourci de l'équipe
     private String shortName;
+
+    //nombre de matchs joués
     private String playedGames;
+
+    //nombre de buts marqués
     private String goals;
+
+    //nombre de but contre
     private String goalsAgainst;
+
+    //différence des buts
     private String goalDifference;
+
+    //nombre de victoires
     private String wins;
+
+    //nombre de matchs nuls
     private String draws;
+
+    //nombre de défaites
     private String looses;
 
     public String getId() {
@@ -28,12 +59,12 @@ public class SportsClub {
         this.id = id;
     }
 
-    public String getImg() {
-        return img;
+    public String getLogoUrl() {
+        return logoUrl;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
     }
 
     public String getName() {
@@ -143,6 +174,9 @@ public class SportsClub {
         setImageAndShortName();
     }
 
+    /**
+     * Assigne une valeur à imgUrl et à shortName
+     */
     private void setImageAndShortName(){
         JsonParser.getTeam(teamCallback, this.getId());
     }
@@ -155,11 +189,9 @@ public class SportsClub {
             }
             else {
                 setShortName(value.getShortName());
-                setImg(value.getCrestUrl());
+                setLogoUrl(value.getCrestUrl());
             }
         }
-
-
         @Override
         public void onError() {
         }

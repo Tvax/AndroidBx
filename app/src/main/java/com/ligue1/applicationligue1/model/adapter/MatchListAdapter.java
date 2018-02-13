@@ -18,6 +18,9 @@ import java.util.List;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
+/**
+ * L'adpateur de la liste des matchs
+ */
 public class MatchListAdapter extends ArrayAdapter<Match> {
     private static final String DASH_SURROUNDED_BY_WHITESPACES = " - ";
     private List<Match> matches;
@@ -42,9 +45,9 @@ public class MatchListAdapter extends ArrayAdapter<Match> {
         date.setText(matches.get(position).getDate());
 
         TextView score = convertView.findViewById(R.id.matchScoreText);
-        score.setText(matches.get(position).getGoalsTeam1() + DASH_SURROUNDED_BY_WHITESPACES + matches.get(position).getGoalsTeam2());
+        score.setText(matches.get(position).getGoalsHomeTeam() + DASH_SURROUNDED_BY_WHITESPACES + matches.get(position).getGoalsAwayTeam());
 
-        if(matches.get(position).getHomeTeam().getImg() != null && matches.get(position).getAwayTeam().getImg() != null) {
+        if(matches.get(position).getHomeTeam().getLogoUrl() != null && matches.get(position).getAwayTeam().getLogoUrl() != null) {
 
             TextView sportsClub1 = convertView.findViewById(R.id.matchHomeTeamNameText);
             sportsClub1.setText(matches.get(position).getHomeTeam().getShortName());
@@ -59,8 +62,8 @@ public class MatchListAdapter extends ArrayAdapter<Match> {
             ImageView awayTeamImage = convertView.findViewById(R.id.matchAwayTeamImage);
             awayTeamImage.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
-            Display.setImageViewToImage(matches.get(position).getHomeTeam().getImg(), activity, activity.getApplicationContext(), homeTeamImage);
-            Display.setImageViewToImage(matches.get(position).getAwayTeam().getImg(), activity, activity.getApplicationContext(), awayTeamImage);
+            Display.setImageViewToImage(matches.get(position).getHomeTeam().getLogoUrl(), activity, activity.getApplicationContext(), homeTeamImage);
+            Display.setImageViewToImage(matches.get(position).getAwayTeam().getLogoUrl(), activity, activity.getApplicationContext(), awayTeamImage);
         }
 
         return convertView;

@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import com.ligue1.applicationligue1.model.api.endpoint.footballEndpoints;
 import com.ligue1.applicationligue1.model.api.leagueTable.LeagueTable;
 import com.ligue1.applicationligue1.model.api.leagueTable.LeagueTableCallBack;
-import com.ligue1.applicationligue1.model.api.leagueTable.Standing;
 import com.ligue1.applicationligue1.model.api.match.Fixture;
 import com.ligue1.applicationligue1.model.api.match.Matches;
 import com.ligue1.applicationligue1.model.api.match.MatchesCallback;
@@ -21,10 +20,17 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Accéde à l'API
+ */
 public final class JsonParser {
     private static final String BASE_URL = "http://api.football-data.org/v1/";
     private static final String LEAGUE = "FL1";
 
+    /**
+     * Initialise Retrofit
+     * @return footballEndpoints
+     */
     private static footballEndpoints setRetrofit(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -34,6 +40,10 @@ public final class JsonParser {
         return retrofit.create(footballEndpoints.class);
     }
 
+    /**
+     * Accéde aux {@link com.ligue1.applicationligue1.model.SportsClub} de l'API
+     * @param callBack la list des {@link com.ligue1.applicationligue1.model.SportsClub}
+     */
     public static void getTeams(final LeagueTableCallBack callBack) {
         footballEndpoints apiService = setRetrofit();
 
@@ -54,6 +64,12 @@ public final class JsonParser {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Accéde aux {@link Matches} de l'API
+     * @param matchesCallback la liste des matches
+     * @param id de l'équipe pour laquelle récupérer les matchs
+     */
     public static void getMatches(final MatchesCallback matchesCallback, String id) {
         footballEndpoints apiService = setRetrofit();
 
@@ -81,6 +97,11 @@ public final class JsonParser {
         }
     }
 
+    /**
+     * Accéde aux {@link Team} de l'API
+     * @param teamCallback la liste de l'équipe
+     * @param teamLink le lien de l'équipe à récupérer
+     */
     public static void getTeam(final TeamCallback teamCallback, final String teamLink) {
         footballEndpoints apiService = setRetrofit();
 

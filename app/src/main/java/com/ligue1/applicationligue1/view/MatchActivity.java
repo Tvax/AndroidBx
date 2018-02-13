@@ -99,15 +99,23 @@ public class MatchActivity extends AppCompatActivity{
             }
         };
         JsonParser.getMatches(matchesCallback, this.getIntent().getStringExtra(TEAM_ID));
-        populateListView();
+        setListView();
     }
 
-    private void populateListView(){
+    /**
+     * Définit un {@link MatchListAdapter} sur {@see matches}
+     */
+    private void setListView(){
         listView = findViewById(R.id.mainListView);
         adapter = new MatchListAdapter(matches, MatchActivity.this);
         listView.setAdapter(adapter);
     }
 
+    /**
+     * Accéde au {@link SportsClub} correspondant à {@param name}
+     * @param name le nom d'une equipe
+     * @return le {@link SportsClub} correspondant
+     */
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private SportsClub getSportsClubFromMatchesList(String name){
         for (Match i : matches){
@@ -121,31 +129,41 @@ public class MatchActivity extends AppCompatActivity{
         return null;
     }
 
+    /**
+     * Créé un {@link Match} grâce à une {@link Fixture}
+     * @param i la {@link Fixture} du {@link Match}
+     * @return le {@link Match} correpondant
+     */
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private Match makeMatch(Fixture i){
         Match match = new Match();
         match.setDate(i.getDate().replace(T_LETTER, WHITE_SPACE).replace(Z_LETTER, EMPTY_SPACE));
 
         if(i.getResult().getGoalsHomeTeam() == null){
-            match.setGoalsTeam1(EMPTY_SPACE);
-            match.setGoalsTeam2(EMPTY_SPACE);
+            match.setGoalsHomeTeam(EMPTY_SPACE);
+            match.setGoalsAwayTeam(EMPTY_SPACE);
         }else {
-            match.setGoalsTeam1(new DecimalFormat(REMOVE_DECIMALS).format(i.getResult().getGoalsHomeTeam()));
-            match.setGoalsTeam2(new DecimalFormat(REMOVE_DECIMALS).format(i.getResult().getGoalsAwayTeam()));
+            match.setGoalsHomeTeam(new DecimalFormat(REMOVE_DECIMALS).format(i.getResult().getGoalsHomeTeam()));
+            match.setGoalsAwayTeam(new DecimalFormat(REMOVE_DECIMALS).format(i.getResult().getGoalsAwayTeam()));
         }
 
-        //check si dans db
+        //Va prendre dans la BDD le {@link SportsClub} correspondant
         SportsClub homeTeam = GatewayDatabase.getTeam(i.getHomeTeamName(), getApplicationContext());
         SportsClub awayTeam = GatewayDatabase.getTeam(i.getAwayTeamName(), getApplicationContext());
 
-        if (homeTeam.getImg() == null) {
+        /*
+        Si il n'y a pas d'images {@link SportsClub}, il n'est pas dans la BDD,
+        donc il essaye de récupérer depuis la liste des matches {@see matches}
+        */
+        if (homeTeam.getLogoUrl() == null) {
             homeTeam = getSportsClubFromMatchesList(i.getHomeTeamName());
 
+            //Si il n'est pas dans la liste il créé un nouveau {@link SportsClub}
             if (homeTeam == null) {
                 homeTeam = new SportsClub(i.getHomeTeamName(), i.getLinks().getHomeTeam().getHref());
             }
         }
-        if (awayTeam.getImg() == null) {
+        if (awayTeam.getLogoUrl() == null) {
             awayTeam = getSportsClubFromMatchesList(i.getAwayTeamName());
 
             if (awayTeam == null) {
