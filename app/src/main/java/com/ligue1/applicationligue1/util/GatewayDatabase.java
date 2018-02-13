@@ -2,45 +2,44 @@ package com.ligue1.applicationligue1.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
-import com.ligue1.applicationligue1.model.Equipe;
+import com.ligue1.applicationligue1.model.SportsClub;
 
-import java.util.Map;
+public final class GatewayDatabase {
 
-import static android.content.Context.MODE_PRIVATE;
+    private final static String SPORTS_CLUB = "SPORTS_CLUB";
+    private final static String IMAGE = "IMAGE";
+    private final static String NAME = "NAME";
+    private final static String RANK = "RANK";
+    private final static String POINTS = "POINTS";
+    private final static String TEAM_LINK = "TEAM_LINK";
+    private final static String SHORT_NAME = "SHORT_NAME";
 
-public class GatewayDatabase {
-
-    public static void saveTeam(Equipe equipe, Context context){
-        SharedPreferences prefs = context.getSharedPreferences("Equipe", 0);
+    public static void saveTeam(SportsClub sportsClub, Context context){
+        SharedPreferences prefs = context.getSharedPreferences(SPORTS_CLUB, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
-        editor.putString(equipe.name+"Image", equipe.img);
-        editor.putString(equipe.name+"Name", equipe.name);
-        editor.putString(equipe.name+"Rank", equipe.rank);
-        editor.putString(equipe.name+"Points", equipe.points);
-        editor.putString(equipe.name+"TeamLink", equipe.teamLink);
-        editor.putString(equipe.name+"ShortName", equipe.shortName);
-        editor.commit();
+        editor.putString(sportsClub.getName() + IMAGE, sportsClub.getImg());
+        editor.putString(sportsClub.getName() + NAME, sportsClub.getName());
+        editor.putString(sportsClub.getName() + RANK, sportsClub.getRank());
+        editor.putString(sportsClub.getName() + POINTS, sportsClub.getPoints());
+        editor.putString(sportsClub.getName() + TEAM_LINK, sportsClub.getTeamLink());
+        editor.putString(sportsClub.getName() + SHORT_NAME, sportsClub.getShortName());
+        editor.apply();
     }
 
-    public static Equipe getTeam(String name, Context context){
-        Equipe equipe = new Equipe();
-        equipe.name = name;
+    public static SportsClub getTeam(String name, Context context){
+        SportsClub sportsClub = new SportsClub();
+        sportsClub.setName(name);
 
-        SharedPreferences prefs = context.getSharedPreferences("Equipe", 0);
+        SharedPreferences prefs = context.getSharedPreferences(SPORTS_CLUB, Context.MODE_PRIVATE);
 
-//        Map<String, ?> allEntries = prefs.getAll();
-//        for (Map.Entry<String, ?> entry : allEntries.entrySet())
-//            Log.d("map values", entry.getKey() + ": " + entry.getValue().toString());
+        sportsClub.setImg(prefs.getString(sportsClub.getName() + IMAGE, null));
+        sportsClub.setRank(prefs.getString(sportsClub.getName() + RANK,null));
+        sportsClub.setPoints(prefs.getString(sportsClub.getName() + POINTS,null));
+        sportsClub.setTeamLink(prefs.getString(sportsClub.getName() + TEAM_LINK,null));
+        sportsClub.setShortName(prefs.getString(sportsClub.getName() + SHORT_NAME,null));
 
-        equipe.img = prefs.getString(equipe.name+"Image", null);
-        equipe.rank = prefs.getString(equipe.name+"Rank",null);
-        equipe.points = prefs.getString(equipe.name+"Points",null);
-        equipe.teamLink = prefs.getString(equipe.name+"TeamLink",null);
-        equipe.shortName = prefs.getString(equipe.name+"ShortName",null);
-
-        return equipe;
+        return sportsClub;
     }
 }

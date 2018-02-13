@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="championshipName">Championnat Ligue 1</string>
+    <string name="resultsAndSchedules">Résultats et calendriers</string>
+
+    <string name="playedGames">MJ</string>
+    <string name="wins">G</string>
+    <string name="looses">P</string>
+    <string name="draws">N</string>
+    <string name="goals">BP</string>
+    <string name="goalsAgainst">BC</string>
+    <string name="goalsDifference">DB</string>
+
+    <string name="errorMessageText">Pas de connexion internet !</string>
+    <string name="teamImageDescription">Logo de l\'équipe</string>
+</resources>

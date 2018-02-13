@@ -8,10 +8,9 @@
 
     <TextView
         android:id="@+id/rank"
-        android:layout_width="wrap_content"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:singleLine="true"
-        android:text="@string/n_4"
         android:textSize="12sp" />
 
     <ImageView
@@ -20,19 +19,18 @@
         android:layout_height="55dp"
         android:layout_marginRight="6dip"
         android:layout_toRightOf="@id/rank"
-        android:contentDescription="@string/todo"
         android:layout_toEndOf="@id/rank"
-        android:layout_marginEnd="6dip" />
+        android:layout_marginEnd="6dip"
+        android:contentDescription="@string/teamImageDescription" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/secondLine"
+        android:layout_above="@id/stats"
         android:layout_alignParentTop="true"
         android:layout_marginRight="6dip"
         android:layout_toRightOf="@id/img"
-        android:text="@string/nom_equipe"
         android:singleLine="true"
         android:textSize="12sp"
         android:layout_marginEnd="6dip"
@@ -40,7 +38,6 @@
 
     <TextView
         android:id="@+id/points"
-        android:text="@string/_34_pts"
         android:gravity="center_vertical"
         android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
@@ -51,17 +48,15 @@
         android:layout_toEndOf="@id/name" />
 
     <TextView
-        android:id="@+id/secondLine"
+        android:id="@+id/stats"
         android:layout_width="fill_parent"
         android:layout_height="26dip"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/img"
         android:singleLine="true"
-        android:text="@string/description"
         android:textSize="12sp"
         android:layout_toEndOf="@id/img"
         android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
-

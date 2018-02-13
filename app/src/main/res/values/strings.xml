@@ -1,11 +1,21 @@
 <resources>
-    <string name="app_name">Application Ligue1</string>
+    <string name="app_name">Ligue 1</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="description">Description</string>
-    <string name="_34_pts">34 PTS</string>
-    <string name="nom_equipe">Nom Equipe</string>
-    <string name="n_4">N*4</string>
-    <string name="todo">TODO</string>
-    <string name="date">Date</string>
-    <string name="equipe_1">Equipe 1</string>
+
+    <string name="championshipName">Ligue 1 Championship</string>
+    <string name="resultsAndSchedules">Results and Scheduled Games</string>
+
+    <string name="playedGames">PG</string>
+    <string name="wins">W</string>
+    <string name="looses">L</string>
+    <string name="draws">D</string>
+    <string name="goals">G</string>
+    <string name="goalsAgainst">GA</string>
+    <string name="goalsDifference">GD</string>
+    
+    <string name="rankNumber">N°</string>
+    <string name="shortPoints">PTS</string>
+
+    <string name="errorMessageText">No internet connection !</string>
+    <string name="teamImageDescription">Logo of the team</string>
 </resources>
