@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     LeagueTableCallBack callBack;
 
-
     private Parcelable mListState;
     private static final String LIST_STATE = "LIST_STATE";
     private static final String TEAM_ID = "TEAM_ID";

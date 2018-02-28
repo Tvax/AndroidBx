@@ -52,6 +52,9 @@ public final class JsonParser {
             call.enqueue(new Callback<LeagueTable>() {
                 @Override
                 public void onResponse(@NonNull Call<LeagueTable> call, @NonNull Response<LeagueTable> response) {
+                    if(!response.isSuccessful()){
+                        callBack.onError();
+                    }
                     callBack.onSuccess(response.body().getStanding());
                 }
 
@@ -78,7 +81,7 @@ public final class JsonParser {
             call.enqueue(new Callback<Matches>() {
                 @Override
                 public void onResponse(@NonNull Call<Matches> call, @NonNull Response<Matches> response) {
-                    if(!response.raw().isSuccessful()){
+                    if(!response.isSuccessful()){
                         matchesCallback.onError();
                     }
 
